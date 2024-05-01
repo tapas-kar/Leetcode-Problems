@@ -24,4 +24,3 @@ class Solution:
         inorder(root)
 
         return result
-
