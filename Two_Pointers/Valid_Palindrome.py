@@ -1,3 +1,5 @@
+# BLIND 75 QUESTION
+
 # A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 # Given a string s, return true if it is a palindrome, or false otherwise.
 
@@ -41,6 +43,14 @@ def isPalindrome(s: str) -> bool:
             return False
     return True
 
+
+
+
+
+
+# APPROACH 2: Neetcode
+# Don't use any in-built function like isalnum() or other functions; write your own alphanumeric checker
+# Basically, use the ASCII values to return if a character has a ASCII value between A - Z or a - z or 0 - 9
 
 s = "race a car"
 
