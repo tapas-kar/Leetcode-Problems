@@ -20,19 +20,33 @@
 # ui != vi
 # The given edges represent a valid star graph.
 
+# def findCenter(self, edges: List[List[int]]) -> int:
+
+#         # total number of vertices
+#         n = len(edges) + 1
+
+#         vote = [0] * (n+1)
+
+#         for i, j in edges:
+#             vote[i] += 1
+#             vote[j] += 1
+
+#         for i in range(len(vote)):
+#             if vote[i] == len(edges):
+#                 return i
+#         return
+
+# Runtime: O(N)
+# Space: O(N)
+
+
+# # The Greedy Algorithm
+# Since the center of the graph is definitely there, we can just find the one common vertex between the first and the second edges
+# One of the edges from the first tuple is BOUND to have that vertex
+
+
 def findCenter(self, edges: List[List[int]]) -> int:
 
-        # total number of vertices
-        n = len(edges) + 1
+    first_edge, second_edge = edges[0], edges[1]
 
-        vote = [0] * (n+1)
-
-        for i, j in edges:
-            vote[i] += 1
-            vote[j] += 1
-
-        for i in range(len(vote)):
-            if vote[i] == len(edges):
-                return i
-        return
-
+    return first_edge[0] if first_edge[0] in second_edge else first_edge[1]
