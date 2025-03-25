@@ -36,3 +36,8 @@ def findCenter(self, edges: List[List[int]]) -> int:
                 return i
         return
 
+
+# # The Greedy Algorithm
+# Since the center of the graph is definitely there, we can just find the one common vertex between the first and the second edges
+# One of the edges from the first tuple is BOUND to have that vertex
+
