@@ -33,6 +33,10 @@
 
 # nums = [-1,0,1,2,-1,-4]
 
+# Runtime: O(n^2)
+# Space: O(1) or O(n) extra space depending on the sorting algortihm
+#           O(m) space for the output list, where m in the number of triplets and n is the length of the given array
+
 def threeSum(nums: list[int]) -> list[list[int]]:
     res = []
     nums.sort()
