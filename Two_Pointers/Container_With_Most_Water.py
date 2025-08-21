@@ -15,6 +15,19 @@
 # Input: height = [1,1]
 # Output: 1
 
+# Approach 1: To go through the left and right area of each combination possible between two heights
+# Runtime: O(n**2)
+# Space: O(1)
+def maxArea(heights: list[int]) -> int:
+
+    res = 0
+    
+    for l in range(len(heights)):
+        for r in range(l+1, len(heights)):
+            area = (r-l) * min(heights[l], heights[r])
+            res = max(area, res)
+
+    return res
 # Runtime: O(n)
 # Space: O(1)
 
