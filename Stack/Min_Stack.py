@@ -43,26 +43,26 @@
 # Space: O(n)
 
 # I AM SURPRISED THIS GOT ACCEPTED IN LEETCODE since they specifically asked us to design this to run in O(1)
-class MinStack:
+# class MinStack:
 
-    def __init__(self):
-        self.stack = []
+#     def __init__(self):
+#         self.stack = []
 
-    def push(self, val: int) -> None:
-        self.stack.append(val)
+#     def push(self, val: int) -> None:
+#         self.stack.append(val)
         
 
-    def pop(self) -> None:
-        if self.stack:
-            self.stack.pop()
+#     def pop(self) -> None:
+#         if self.stack:
+#             self.stack.pop()
         
 
-    def top(self) -> int:
-        return self.stack[-1]
+#     def top(self) -> int:
+#         return self.stack[-1]
         
 
-    def getMin(self) -> int:
-        return min(self.stack)
+#     def getMin(self) -> int:
+#         return min(self.stack)
         
 
 
@@ -72,3 +72,31 @@ class MinStack:
 # obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.getMin()
+
+
+# Approach 2 - NEETCODE approach - Build 2 stacks - 1 for the main stack and 1 to maintain the minimum value at each node
+# This is how the minimum value is retrieved in O(1) constant time without going over the whole stack
+# Keep in mind that the question only has a constraint on getting the minimum value is constant time, there is no restriction on how much memory we have to use to achieve that
+class MinStack:
+
+    def __init__(self):
+        self.stack = []
+        self.minStack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        min_stack_add = min(val, self.minStack[-1] if self.minStack else val)
+        self.minStack.append(min_stack_add)
+        
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minStack.pop()
+        
+
+    def top(self) -> int:
+        return self.stack[-1]
+        
+
+    def getMin(self) -> int:
+        return self.minStack[-1]
