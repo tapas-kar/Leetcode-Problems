@@ -39,6 +39,10 @@
 
 
 # My approach - Approach 1 - It was really guess work but a bit of debugging, I can't believe I got it to work on my own
+# Runtime: O(n)
+# Space: O(n)
+
+# I AM SURPRISED THIS GOT ACCEPTED IN LEETCODE since they specifically asked us to design this to run in O(1)
 class MinStack:
 
     def __init__(self):
