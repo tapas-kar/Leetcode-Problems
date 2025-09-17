@@ -40,48 +40,72 @@
 # else if a division result is between 0 and 1, I use math.floor to round down to 0
 # else, otherwise a division result will be an integer division ex: x//y
 
-import math
+# import math
 
-def evalRPN(tokens: list[str]) -> int:
+# def evalRPN(tokens: list[str]) -> int:
 
-    num_stack = []
+#     num_stack = []
 
-    def add(x, y):
-        return x + y
+#     def add(x, y):
+#         return x + y
     
-    def subtract(x, y):
-        return x - y
+#     def subtract(x, y):
+#         return x - y
     
-    def multiply(x, y):
-        return x * y
+#     def multiply(x, y):
+#         return x * y
     
-    def divide(x, y):
-        if x/y < 0 and x/y > -1:
-            return math.ceil(x/y)
-        elif x/y > 0 and x/y < 1:
-            return math.floor(x/y)
-        else:
-            return x//y
+#     def divide(x, y):
+#         if x/y < 0 and x/y > -1:
+#             return math.ceil(x/y)
+#         elif x/y > 0 and x/y < 1:
+#             return math.floor(x/y)
+#         else:
+#             return x//y
 
-    operators = ["+", "-", "*", "/"]
+#     operators = ["+", "-", "*", "/"]
 
-    for i in range(len(tokens)):
-        if tokens[i] not in operators:
-            num_stack.append(tokens[i])
-        else:
-            if num_stack:
-                op2 = int(num_stack.pop())
-                op1 = int(num_stack.pop())
-            if tokens[i] == "+":
-                result = add(op1, op2)
-            if tokens[i] == "-":
-                result = subtract(op1, op2)
-            if tokens[i] == "*":
-                result = multiply(op1, op2)
-            if tokens[i] == "/":
-                result = divide(op1, op2)
+#     for i in range(len(tokens)):
+#         if tokens[i] not in operators:
+#             num_stack.append(tokens[i])
+#         else:
+#             if num_stack:
+#                 op2 = int(num_stack.pop())
+#                 op1 = int(num_stack.pop())
+#             if tokens[i] == "+":
+#                 result = add(op1, op2)
+#             if tokens[i] == "-":
+#                 result = subtract(op1, op2)
+#             if tokens[i] == "*":
+#                 result = multiply(op1, op2)
+#             if tokens[i] == "/":
+#                 result = divide(op1, op2)
             
-            num_stack.append(result)
+#             num_stack.append(result)
 
-    return num_stack[-1] if num_stack else -1
+#     return num_stack[-1] if num_stack else -1
+
+
+# Approach 2 - Neetcode Approach
+# NOTE: He handled the division operator by taking the float of the operand "b" and dividing that by a and then taking the integer of that???
+# Also note that he did not have to type case the operators to "int" because he is doing that right before pushing the numbers to the stack
+# Runtime: O(n)
+# Space: O(n)
+
+def evalRPN(tokens: List[str]) -> int:
+    stack = []
+    for c in tokens:
+        if c == "+":
+            stack.append(stack.pop() + stack.pop())
+        elif c == "-":
+            a, b = stack.pop(), stack.pop()
+            stack.append(b - a)
+        elif c == "*":
+            stack.append(stack.pop() * stack.pop())
+        elif c == "/":
+            a, b = stack.pop(), stack.pop()
+            stack.append(int(float(b) / a))
+        else:
+            stack.append(int(c))
+    return stack[0]
             
