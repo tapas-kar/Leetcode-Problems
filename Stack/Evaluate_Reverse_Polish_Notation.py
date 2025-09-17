@@ -92,6 +92,11 @@
 # Runtime: O(n)
 # Space: O(n)
 
+# Upon Review of the solution - turns out we don't need to convert any operands to float for division
+# We need to make sure that the subtraction and division are done in the same order:
+#     we want to subtract the value that is popped 1st FROM the value that is popped 2nd
+#     we want to divide the value that is popped 2nd BY the value that is popped 1st
+
 def evalRPN(tokens: List[str]) -> int:
     stack = []
     for c in tokens:
