@@ -39,7 +39,8 @@
 #         current_profit = right - left
 
 
-
+# Runtime: O(n)
+# Space: O(1)
 
 # Approach 2: This is Neetcode's approach for the solution
 def maxProfit(prices) -> int:
