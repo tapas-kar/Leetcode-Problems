@@ -45,11 +45,11 @@
 # Approach 2: This is Neetcode's approach for the solution
 def maxProfit(prices) -> int:
 
-    l, r = 0, 1
+    l, r = 0, 1 # left: buy, right: sell
     max_profit = 0
 
     while r < len(prices):
-
+        # profitaable?
         if prices[l] < prices[r]:
             profit = prices[r] - prices[l]
             max_profit = max(max_profit, profit)
