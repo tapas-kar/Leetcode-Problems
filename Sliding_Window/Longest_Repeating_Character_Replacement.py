@@ -70,7 +70,7 @@ def characterReplacement(s: str, k: int) -> int:
 
 # Approach 3: Neetcode with maxf optimization
 def characterReplacement(s: str, k: int) -> int:
-    count = 0
+    count = {}
     res = 0
 
     l = 0
