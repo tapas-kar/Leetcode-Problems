@@ -19,7 +19,7 @@
 
 # Approach 1: My attempt
 # Runtime: O(n) # because it will traverse the entire tree to find the max depth
-# Space: O(h) # because the recursive stack will create h frames per subtree on the left and the right
+# Space: O(h) # because the recursive stack will create h frames per subtree on the left and the right, which could be O(n) if it is not a balanced BT
 
 def maxDepth(self, root: Optional[TreeNode]) -> int:
     # Recursive solution on my own without looking at the solution!!!
