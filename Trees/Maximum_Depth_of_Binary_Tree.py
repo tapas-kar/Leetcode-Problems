@@ -19,7 +19,7 @@
 
 # Approach 1: My attempt
 # Runtime: O(n) # because it will traverse the entire tree to find the max depth
-# Space: O(h) # because the recursive stack will create h frames per subtree on the left and the right
+# Space: O(h) # because the recursive stack will create h frames per subtree on the left and the right, which could be O(n) if it is not a balanced BT
 
 def maxDepth(self, root: Optional[TreeNode]) -> int:
     # Recursive solution on my own without looking at the solution!!!
@@ -32,3 +32,63 @@ def maxDepth(self, root: Optional[TreeNode]) -> int:
     right = self.maxDepth(root.right)
 
     return 1 + max(left, right) # 1 + the max of both sides because the root node is considered as a separate level
+
+
+
+
+
+
+# Approach 2: Neetcode BFS (for no reason but just learning purposes)
+# Runtime and Space complexity stays the same
+
+from collections import deque
+def maxDepth(self, root: Optional[TreeNode]) -> int:
+
+    if not root:
+        return 0
+    
+    level = 0
+
+    q = deque([root]) # another way of initializing the deque with the root, wonder why it is initialized as a list though
+
+    while q:
+        for i in range(len(q)):
+            node = q.popleft()
+            if node.left:
+                q.append(node.left)
+            if node.right:
+                q.append(node.right)
+        level += 1
+
+    return level
+
+
+
+
+
+# Approach 3: Neetcode Iterative DFS
+# We are doing a pre-order traversal using DFS because it is the easiest to implement - where we process the root node first and add its child nodes to the stack
+
+def maxDepth(self, root: Optional[TreeNode]) -> int:
+
+    # Neetcode had this earlier in the explanation with res initialized to 1 but decided to remove it because...
+    # the if condition to check if the node is a Null Node or not updates the res count accordingly
+    # if the node is null, the while loop executes and that null node is popped but because the "if node" condition checks if the node is null or not prevents that loop from updating the depth (res) value
+    # if not root:
+    #     return 0
+    # res = 1
+    
+    stack = [[root, 1]]
+
+    res = 0
+
+    while stack:
+
+        node, depth = stack.pop()
+
+        if node:
+            res = max(res, depth)
+            stack.append([node.left, 1 + depth])
+            stack.append([node.right, 1 + depth])
+
+    return res
