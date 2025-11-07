@@ -6,8 +6,6 @@
 
 # The solution set must not contain duplicate subsets. Return the solution in any order.
 
- 
-
 # Example 1:
 
 # Input: nums = [1,2,3]
@@ -19,6 +17,13 @@
 
 # class Solution:
 #     def subsets(self, nums: List[int]) -> List[List[int]]
+
+# Approach 1: Recursive Backtracking solution
+# Basically, At every element of the input array, we have a choice to either 
+# 1. include that element in the subset OR 2. NOT include that element in the subset and we use a Recursive backtracking to implement that
+
+# Runtime: O(n * (2^n))
+# Space: O(n)
 
 def subsets(nums: List[int]) -> List[List[int]]:
 
